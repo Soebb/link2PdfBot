@@ -53,9 +53,10 @@ async def link_extract(self, m: Message):
         return
     try:
         pyppdf.save_pdf('page.pdf', m.text)
-    except:
-        pass
-    await m.reply_document(document='page.pdf')
+    except Exception as e:
+        print(e)
+    else:
+        await m.reply_document(document='page.pdf')
     file_name = str()
     #
     thumb_path = os.path.join(os.getcwd(), "img")
