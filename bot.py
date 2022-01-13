@@ -52,7 +52,7 @@ async def link_extract(self, m: Message):
         )
         return
     try:
-        pyppdf.save_pdf('page.pdf', m.text)
+        await pyppdf.save_pdf('page.pdf', m.text)
     except Exception as e:
         print(e)
     else:
