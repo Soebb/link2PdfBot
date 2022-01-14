@@ -4,4 +4,3 @@ bs4
 requests
 weasyprint
 https://github.com/Soebb/pyppdf/archive/master.zip
-pyppeteer2
