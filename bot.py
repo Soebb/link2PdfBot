@@ -1,5 +1,4 @@
 import os
-import pyppdf
 import requests
 import weasyprint
 import urllib.request
@@ -51,12 +50,13 @@ async def link_extract(self, m: Message):
             )
         )
         return
-    try:
-        await pyppdf.save_pdf('page.pdf', m.text)
-    except Exception as e:
-        print(e)
-    else:
-        await m.reply_document(document='page.pdf')
+    with requests.get(m.text, stream=True, allow_redirects=True) as r :
+        with open('temp/vid.mp4', 'wb') as f :
+            for chunk in r.iter_content(chunk_size=1024*1024) :
+                if (chunk) :
+                    written = f.write(chunk)
+
+    await m.reply_video(video='temp/vid.mp4')
     file_name = str()
     #
     thumb_path = os.path.join(os.getcwd(), "img")
