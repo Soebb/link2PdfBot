@@ -3,4 +3,3 @@ TgCrypto
 bs4
 requests
 weasyprint
-https://github.com/samadii/pyppdf/archive/master.zip
